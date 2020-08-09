@@ -1,0 +1,27 @@
+.Button {
+    display: flex;
+    height: 12.5vh;
+    width: 33.33vw;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    outline: 2px solid rgb(24, 24, 24);
+    font-weight: 900;
+}
+.Button :hover {
+    background-color: teal;
+}
+
+.input {
+    background-color: gray;
+    color: white;
+}
+.output {
+    background-color: rgb(87, 87, 87);
+    color: white;
+}
+.operator {
+    background-color: #fe9241;
+    color: white;
+}
