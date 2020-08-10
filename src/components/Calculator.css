@@ -1,3 +1,22 @@
 .Calculator {
     width: 100vw;
 }
+.Input {
+    display: flex;
+    height: 18.75vh;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 6vh;
+    font-weight: 900;
+    background-color: rgb(224, 224, 224);
+}
+.Display {
+    display: flex;
+    height: 18.75vh;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 4vh;
+    background-color: rgb(224, 224, 224);
+}
