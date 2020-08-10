@@ -15,14 +15,20 @@ class Calculator extends Component {
   }
 
   calculator = () => {
-    return this.state.io
+    if (this.state.operator === '+')
+      this.setState({ io: ((Number(this.state.firstNumber)) + (Number(this.state.secondNumber))), });
+    else if (this.state.operator === '-')
+      this.setState({ io: (Number(this.state.firstNumber) - Number(this.state.secondNumber)), });
+    else if (this.state.operator === 'X')
+      this.setState({ io: (Number(this.state.firstNumber) * Number(this.state.secondNumber)), });
+    else if (this.state.operator === '/')
+      this.setState({ io: (Number(this.state.firstNumber) / Number(this.state.secondNumber)), });
   }
 
   dispControl = key => {
-    if (key === '=')
-      this.setState({
-        io: this.calculator(),
-      });
+    if (key === '='){
+      this.calculator();
+    }
     else if (key === 'AC')
       this.setState({
         io: "",
@@ -31,18 +37,25 @@ class Calculator extends Component {
         secondNumber: "",
       });
     else if (['+', '-', 'X', '/'].indexOf(key) >= 0) {
-      this.setState({
-        firstNumber: this.state.io,
-        io: "",
-        secondNumber: "",
-        operator: key,
-      });
+      if (this.state.secondNumber)
+        this.setState({
+          firstNumber: this.state.io,
+          io: "",
+          operator: key,
+          secondNumber: "",
+        });
+      else
+        this.setState({
+          firstNumber: this.state.io,
+          io: "",
+          operator: key,
+        });
     }
     else {
       if (this.state.operator)
         this.setState({
           io: this.state.io + key,
-          secondNumber: this.state.io,
+          secondNumber: this.state.secondNumber + key,
         });
       else
       this.setState({
