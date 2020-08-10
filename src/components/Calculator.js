@@ -16,13 +16,17 @@ class Calculator extends Component {
 
   calculator = () => {
     if (this.state.operator === '+')
-      this.setState({ io: ((Number(this.state.firstNumber)) + (Number(this.state.secondNumber))), });
+      this.setState({ io: String((Number(this.state.firstNumber)) + (Number(this.state.secondNumber))), });
     else if (this.state.operator === '-')
-      this.setState({ io: (Number(this.state.firstNumber) - Number(this.state.secondNumber)), });
+      this.setState({ io: String((Number(this.state.firstNumber) - Number(this.state.secondNumber))), });
     else if (this.state.operator === 'X')
-      this.setState({ io: (Number(this.state.firstNumber) * Number(this.state.secondNumber)), });
+      this.setState({ io: String((Number(this.state.firstNumber) * Number(this.state.secondNumber))), });
     else if (this.state.operator === '/')
-      this.setState({ io: (Number(this.state.firstNumber) / Number(this.state.secondNumber)), });
+      this.setState({ io: String((Number(this.state.firstNumber) / Number(this.state.secondNumber))), });
+    else if (this.state.operator === '%')
+      this.setState({ io: String((Number(this.state.firstNumber) % Number(this.state.secondNumber))), });
+    else if (this.state.operator === '^')
+      this.setState({ io: String((Number(this.state.firstNumber) ** Number(this.state.secondNumber))), });
   }
 
   dispControl = key => {
@@ -36,7 +40,16 @@ class Calculator extends Component {
         operator: "",
         secondNumber: "",
       });
-    else if (['+', '-', 'X', '/'].indexOf(key) >= 0) {
+    else if (key === 'C'){
+      if (this.state.operator && !this.state.io)
+        this.setState({ operator: "", io: this.state.firstNumber, firstNumber: ""});
+      else
+        this.setState({
+          io: this.state.io.slice(0, -1), 
+          secondNumber: this.state.secondNumber.slice(0, -1),
+        });
+    }
+    else if (['+', '-', 'X', '/', '%', '^'].indexOf(key) >= 0) {
       if (this.state.secondNumber)
         this.setState({
           firstNumber: this.state.io,
@@ -76,9 +89,9 @@ class Calculator extends Component {
             <div className="Input">{ this.state.io } &nbsp; &nbsp; </div>
         </div>
         <div className='row'>
-            <Button>Sin</Button>
-            <Button>Cos</Button>
-            <Button>Tan</Button>
+            <Button handleClick = {this.dispControl}>%</Button>
+            <Button handleClick = {this.dispControl}>^</Button>
+            <Button handleClick = {this.dispControl}>C</Button>
             <Button handleClick = {this.dispControl}>AC</Button>
         </div>
         <div className='row'>
