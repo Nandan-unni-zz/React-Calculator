@@ -1,3 +1,8 @@
+# Calculator made with React Framework
+
+## [View on Heroku](http://nqcalculator.herokuapp.com/)
+## [View on Firebase](https://nqcalculator.web.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
